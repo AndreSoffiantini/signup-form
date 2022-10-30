@@ -1,13 +1,92 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: hsl(0, 100%, 74%);
+  background-image: url(./images/bg-intro-desktop.png);
+}
+
+.app {
+  height: 100vh;
+  padding: 10vh;
+}
+
+.container {
+  height: 80vh;
+  display: flex;
+}
+
+.col-2 {
+  width: 50%;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.text-box {
+  margin: auto;
+}
+
+h1 {
+  font-size: 48px;
+  line-height: 55px;
+  letter-spacing: 0.0165em;
+}
+
+.text-white {
+  color: whitesmoke;
+}
+
+.bg-white {
+  background-color: whitesmoke;
+}
+
+.bg-blue {
+  background-color: hsl(248, 32%, 49%);
+}
+
+.form-field input {
+  font: inherit;
+  padding: 20px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.form-button button {
+  font: inherit;
+  width: 100%;
+  height: 55px;
+  background-color: hsl(154, 59%, 51%);
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.rounded-square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
 }
