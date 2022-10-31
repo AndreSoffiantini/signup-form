@@ -63,21 +63,25 @@ function App() {
         </div>
 
         <div className="col-2 flex-col justify-between">
-          <div></div>
           <div
             className="rounded-square bg-blue text-white"
-            style={{ height: "15%" }}
+            style={{ height: "10%" }}
           >
             Try it free 7 days then $20/mo. thereafter
           </div>
-          <div className="rounded-square bg-white" style={{ height: "80%" }}>
-            <div>
+          <div className="rounded-square bg-white" style={{ height: "85%" }}>
+            <div className="form-container">
               <form onSubmit={submitHandler}>
                 <div className="form-fields">
                   <div className="form-field">
                     <input
+                      className={
+                        !showAlert[0]
+                          ? "grey-border text-grey"
+                          : "red-border alert-icon"
+                      }
                       type="text"
-                      placeholder="First Name"
+                      placeholder={!showAlert[0] ? "First Name" : ""}
                       value={userInput.firstName}
                       onChange={inputHandler("firstName")}
                     />
@@ -92,8 +96,13 @@ function App() {
                   </div>
                   <div className="form-field">
                     <input
+                      className={
+                        !showAlert[1]
+                          ? "grey-border text-grey"
+                          : "red-border alert-icon"
+                      }
                       type="text"
-                      placeholder="Last Name"
+                      placeholder={!showAlert[1] ? "Last Name" : ""}
                       value={userInput.lastName}
                       onChange={inputHandler("lastName")}
                     />
@@ -108,8 +117,15 @@ function App() {
                   </div>
                   <div className="form-field">
                     <input
+                      className={
+                        !showAlert[2]
+                          ? "grey-border text-grey"
+                          : "red-border alert-icon text-red"
+                      }
                       type="text"
-                      placeholder="Email"
+                      placeholder={
+                        !showAlert[2] ? "Email" : "email@example.com"
+                      }
                       value={userInput.email}
                       onChange={inputHandler("email")}
                     />
@@ -124,8 +140,13 @@ function App() {
                   </div>
                   <div className="form-field">
                     <input
+                      className={
+                        !showAlert[3]
+                          ? "grey-border text-grey"
+                          : "red-border alert-icon"
+                      }
                       type="password"
-                      placeholder="Password"
+                      placeholder={!showAlert[3] ? "Password" : ""}
                       value={userInput.password}
                       onChange={inputHandler("password")}
                     />
@@ -145,9 +166,12 @@ function App() {
                   </button>
                 </div>
               </form>
-              <p>
-                By clicking the button, you are agreeing to our Terms and
-                Services
+              <p className="terms-and-services" style={{ color: "lightgrey" }}>
+                By clicking the button, you are agreeing to our
+                <span className="text-red" style={{ fontWeight: 700 }}>
+                  {" "}
+                  Terms and Services{" "}
+                </span>
               </p>
             </div>
           </div>
