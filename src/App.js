@@ -10,6 +10,10 @@ function App() {
 
   const [showAlert, setShowAlert] = useState([false, false, false, false]);
 
+  function isValidEmail(email) {
+    return /\S+@\S+\.\S+/.test(email);
+  }
+
   const inputHandler = (field) => {
     return (e) => {
       setUserInput((prevState) => ({
@@ -28,6 +32,10 @@ function App() {
 
       if (!Object.values(userInput)[index]) {
         alert = true;
+      } else if (index === 2) {
+        if (!isValidEmail(Object.values(userInput)[index])) {
+          alert = true;
+        }
       } else {
         alert = false;
       }
@@ -111,7 +119,7 @@ function App() {
                         (!showAlert[2] ? "display-none" : null)
                       }
                     >
-                      Email cannot be empty
+                      Looks like this is not an email
                     </div>
                   </div>
                   <div className="form-field">
