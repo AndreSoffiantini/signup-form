@@ -1,4 +1,45 @@
+import React, { useState } from "react";
+
 function App() {
+  const [userInput, setUserInput] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
+
+  const [showAlert, setShowAlert] = useState([false, false, false, false]);
+
+  const inputHandler = (field) => {
+    return (e) => {
+      setUserInput((prevState) => ({
+        ...prevState,
+        [field]: e.target.value,
+      }));
+    };
+  };
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+
+    const newShowAlert = showAlert.map((alert, index) => {
+      //console.log(alert);
+      //console.log(!Object.values(userInput)[index]);
+
+      if (!Object.values(userInput)[index]) {
+        alert = true;
+      } else {
+        alert = false;
+      }
+
+      return alert;
+    });
+
+    //console.log(newShowAlert);
+
+    setShowAlert(newShowAlert);
+  };
+
   return (
     <div className="app">
       <div className="container">
@@ -23,19 +64,71 @@ function App() {
           </div>
           <div className="rounded-square bg-white" style={{ height: "80%" }}>
             <div>
-              <form>
+              <form onSubmit={submitHandler}>
                 <div className="form-fields">
                   <div className="form-field">
-                    <input type="text" placeholder="First Name" />
+                    <input
+                      type="text"
+                      placeholder="First Name"
+                      value={userInput.firstName}
+                      onChange={inputHandler("firstName")}
+                    />
+                    <div
+                      className={
+                        "alert-message " +
+                        (!showAlert[0] ? "display-none" : null)
+                      }
+                    >
+                      First Name cannot be empty
+                    </div>
                   </div>
                   <div className="form-field">
-                    <input type="text" placeholder="Last Name" />
+                    <input
+                      type="text"
+                      placeholder="Last Name"
+                      value={userInput.lastName}
+                      onChange={inputHandler("lastName")}
+                    />
+                    <div
+                      className={
+                        "alert-message " +
+                        (!showAlert[1] ? "display-none" : null)
+                      }
+                    >
+                      Last Name cannot be empty
+                    </div>
                   </div>
                   <div className="form-field">
-                    <input type="email" placeholder="Email Address" />
+                    <input
+                      type="text"
+                      placeholder="Email"
+                      value={userInput.email}
+                      onChange={inputHandler("email")}
+                    />
+                    <div
+                      className={
+                        "alert-message " +
+                        (!showAlert[2] ? "display-none" : null)
+                      }
+                    >
+                      Email cannot be empty
+                    </div>
                   </div>
                   <div className="form-field">
-                    <input type="password" placeholder="Password" />
+                    <input
+                      type="password"
+                      placeholder="Password"
+                      value={userInput.password}
+                      onChange={inputHandler("password")}
+                    />
+                    <div
+                      className={
+                        "alert-message " +
+                        (!showAlert[3] ? "display-none" : null)
+                      }
+                    >
+                      Password cannot be empty
+                    </div>
                   </div>
                 </div>
                 <div className="form-button">
