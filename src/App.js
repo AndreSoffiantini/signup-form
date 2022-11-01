@@ -162,7 +162,7 @@ function App() {
                 </div>
                 <div className="form-button">
                   <button type="submit" style={{ color: "white" }}>
-                    Claim your free trial
+                    CLAIM YOUR FREE TRIAL
                   </button>
                 </div>
               </form>
